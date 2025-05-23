@@ -11,7 +11,7 @@ export function MainProvider({ children }: PropsWithChildren) {
   }, [])
 
   if (!isMounted) {
-    // Можно вернуть <div className="invisible" /> или <></>
+
     return null
   }
 
@@ -20,7 +20,7 @@ export function MainProvider({ children }: PropsWithChildren) {
       <ThemeProvider
         attribute="class"
         defaultTheme="light"
-        storageKey="teacoder-theme"
+        storageKey="color-theme"
         disableTransitionOnChange
         enableSystem={false}
       >
