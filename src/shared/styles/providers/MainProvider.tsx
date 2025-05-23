@@ -1,9 +1,31 @@
-"use client";
+'use client'
 
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, useEffect, useState } from 'react'
+import { TanstackQueryProvider, ThemeProvider } from './index'
 
-import { TanstackQueryProvider } from "./index";
+export function MainProvider({ children }: PropsWithChildren) {
+  const [isMounted, setIsMounted] = useState(false)
 
-export function MainProvider({ children }: PropsWithChildren<unknown>) {
-  return <TanstackQueryProvider>{children}</TanstackQueryProvider>;
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    // Можно вернуть <div className="invisible" /> или <></>
+    return null
+  }
+
+  return (
+    <TanstackQueryProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        storageKey="teacoder-theme"
+        disableTransitionOnChange
+        enableSystem={false}
+      >
+        {children}
+      </ThemeProvider>
+    </TanstackQueryProvider>
+  )
 }

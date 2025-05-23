@@ -1,35 +1,40 @@
+import type { Metadata } from "next";
 
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import '@/shared/styles/globals.css'
-import { MainProvider } from '@/shared/styles/providers'
+import { Inter } from "next/font/google";
 
+import "@/shared/styles/globals.css";
+import { MainProvider } from "@/shared/styles/providers";
+import { ToggleTheme } from "@/shared/styles/components/ui/index";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: {
-		absolute: 'Курс по авторизации',
-		template: '%s | Курс по авторизации'
-	},
-	description:
-		'Это учебный проект, созданный для демонстрации полного цикла авторизации пользователей'
-}
+  title: {
+    absolute: "Курс по авторизации",
+    template: "%s | Курс по авторизации",
+  },
+  description:
+    "Это учебный проект, созданный для демонстрации полного цикла авторизации пользователей",
+};
 
 export default function RootLayout({
-	children
+  children,
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang='en'>
-				<body className={GeistSans.variable}>
-				<MainProvider>
-					<div className='relative flex min-h-screen flex-col'>
-						<div className='flex h-screen w-full items-center justify-center px-4'>
-							{children}
-						</div>
-					</div>
-				</MainProvider>
-			</body>
-		</html>
-	)
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <MainProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <ToggleTheme />
+            <div className="flex h-screen w-full items-center justify-center px-4">
+              {children}
+            </div>
+          </div>
+        </MainProvider>
+      </body>
+    </html>
+  );
 }
+
