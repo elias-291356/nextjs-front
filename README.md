@@ -40,7 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 
-npm install  @tanstack/react-query react-hook-form zod @hookform/resolvers react-icons next-themes react-google-recaptcha @radix-ui/react-slot tailwindcss-animate geist @radix-ui/react-label
+npm install  @tanstack/react-query react-hook-form zod @hookform/resolvers react-icons next-themes react-google-recaptcha @radix-ui/react-slot tailwindcss-animate geist @radix-ui/react-label sonner
 
 
 npm install  -D @types/react-google-recaptcha prettier-plugin-tailwindcss @trivago/prettier-plugin-sort-imports

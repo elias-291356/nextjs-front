@@ -1,7 +1,7 @@
 'use client'
 
 import { type PropsWithChildren, useEffect, useState } from 'react'
-import { TanstackQueryProvider, ThemeProvider } from './index'
+import { TanstackQueryProvider, ThemeProvider, ToastProvider } from './index'
 
 export function MainProvider({ children }: PropsWithChildren) {
   const [isMounted, setIsMounted] = useState(false)
@@ -24,6 +24,7 @@ export function MainProvider({ children }: PropsWithChildren) {
         disableTransitionOnChange
         enableSystem={false}
       >
+        <ToastProvider/>
         {children}
       </ThemeProvider>
     </TanstackQueryProvider>
