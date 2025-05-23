@@ -35,17 +35,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-npm install  @tanstack/react-query
-react-hook-form
-zod
-@hookform/resolvers
-react-icons
-next-themes
-react-google-recaptcha
-@radix-ui/react-slot
-tailwindcss-animate
 
 
-npm install @types/react-google-recaptcha
-prettier-plugin-tailwindcss
-@trivago/prettier-plugin-sort-imports
+
+
+
+npm install  @tanstack/react-query react-hook-form zod @hookform/resolvers react-icons next-themes react-google-recaptcha @radix-ui/react-slot tailwindcss-animate geist
+
+
+npm install  -D @types/react-google-recaptcha prettier-plugin-tailwindcss @trivago/prettier-plugin-sort-imports
