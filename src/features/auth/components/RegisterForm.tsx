@@ -121,7 +121,7 @@ export function RegisterForm() {
           <Button type="submit">Создать аккаунт</Button>
         </form>
       </Form>
-      RegisterForm
+
     </AuthWrapper>
   );
 }
