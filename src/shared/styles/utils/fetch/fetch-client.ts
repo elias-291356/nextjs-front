@@ -46,7 +46,7 @@ export class FetchClient {
 		method: RequestInit['method'],
 		options: RequestOptions = {}
 	) {
-		let url = `${this.baseUrl}/${endpoint}`
+		let url = `${this.baseUrl}/api/${endpoint}`
 
 		if (options.params) {
 			url += this.createSearchParams(options.params)

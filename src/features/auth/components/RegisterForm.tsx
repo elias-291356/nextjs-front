@@ -18,7 +18,8 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-import { toast } from 'sonner'
+import { toast } from "sonner";
+import { useRegisterMutation } from "../hooks";
 
 export function RegisterForm() {
   const { theme } = useTheme();
@@ -33,12 +34,13 @@ export function RegisterForm() {
       passwordRepeat: "",
     },
   });
+  const { register, isLoadingRegister } = useRegisterMutation();
 
   const onSubmit = (values: TypeRegisterSchema) => {
     if (recaptchaValue) {
-      console.log(values)
+      register({ values, recaptcha: recaptchaValue });
     } else {
-      toast.error('Пожалуйста, завершите reCAPTCHA')
+      toast.error("Пожалуйста, завершите reCAPTCHA");
     }
   };
 
@@ -62,7 +64,11 @@ export function RegisterForm() {
               <FormItem>
                 <FormLabel>Имя</FormLabel>
                 <FormControl>
-                  <Input placeholder="Иван" {...field} />
+                  <Input
+                    placeholder="Иван"
+                    disabled={isLoadingRegister}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -78,6 +84,7 @@ export function RegisterForm() {
                   <Input
                     placeholder="ivan@example.com"
                     type="email"
+                    disabled={isLoadingRegister}
                     {...field}
                   />
                 </FormControl>
@@ -92,7 +99,12 @@ export function RegisterForm() {
               <FormItem>
                 <FormLabel>Пароль</FormLabel>
                 <FormControl>
-                  <Input placeholder="******" type="password" {...field} />
+                  <Input
+                    placeholder="******"
+                    type="password"
+                    disabled={isLoadingRegister}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -105,7 +117,12 @@ export function RegisterForm() {
               <FormItem>
                 <FormLabel>Повторите пароль</FormLabel>
                 <FormControl>
-                  <Input placeholder="******" type="password" {...field} />
+                  <Input
+                    placeholder="******"
+                    type="password"
+                    disabled={isLoadingRegister}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -118,10 +135,9 @@ export function RegisterForm() {
               theme={theme === "light" ? "light" : "dark"}
             />
           </div>
-          <Button type="submit">Создать аккаунт</Button>
+          <Button type="submit" disabled={isLoadingRegister}>Создать аккаунт</Button>
         </form>
       </Form>
-
     </AuthWrapper>
   );
 }
