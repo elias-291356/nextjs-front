@@ -106,7 +106,7 @@ export function LoginForm() {
           <Button type="submit">Войти аккаунт</Button>
         </form>
       </Form>
-      RegisterForm
+  
     </AuthWrapper>
   );
 }
