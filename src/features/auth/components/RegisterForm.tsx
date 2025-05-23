@@ -18,6 +18,8 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import { toast } from 'sonner'
+
 export function RegisterForm() {
   const { theme } = useTheme();
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
@@ -36,7 +38,7 @@ export function RegisterForm() {
     if (recaptchaValue) {
       console.log(values)
     } else {
-      console.log('MUST CLICK ON RECAPTCHA')
+      toast.error('Пожалуйста, завершите reCAPTCHA')
     }
   };
 
