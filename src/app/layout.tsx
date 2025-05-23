@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// import { GeistSans } from 'geist/font/sans'
+
 import { Inter } from "next/font/google";
 
 import "@/shared/styles/globals.css";
@@ -37,3 +37,4 @@ export default function RootLayout({
     </html>
   );
 }
+
