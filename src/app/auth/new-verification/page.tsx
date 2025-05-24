@@ -1,4 +1,4 @@
-import { NewVerificationForm } from '@/features/auth/components/NewVerificationForm'
+import { NewVerificationForm } from '@/features/auth/components'
 import type { Metadata } from 'next'
 
 
