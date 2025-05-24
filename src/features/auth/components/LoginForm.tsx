@@ -19,6 +19,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useLoginMutation } from "../hooks";
+import Link from 'next/link'
 
 export function LoginForm() {
   const { theme } = useTheme();
@@ -77,12 +78,20 @@ export function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Пароль</FormLabel>
+                <div className="flex items-center justify-between">
+                  <FormLabel>Пароль</FormLabel>
+                  <Link
+                    href="/auth/reset-password"
+                    className="ml-auto inline-block text-sm underline"
+                  >
+                    Забыли пароль?
+                  </Link>
+                </div>
                 <FormControl>
                   <Input
                     placeholder="******"
-                    type="password"
                     disabled={isLoadingLogin}
+                    type="password"
                     {...field}
                   />
                 </FormControl>
@@ -93,7 +102,7 @@ export function LoginForm() {
 
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={process.env.GOOGLE_RECAPTCHA_SECRET_KEY_CLIENT as string}
+              sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string}
               onChange={setRecaptchaValue}
               theme={theme === "light" ? "light" : "dark"}
             />
