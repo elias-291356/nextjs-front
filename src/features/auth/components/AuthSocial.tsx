@@ -20,7 +20,7 @@ export function AuthSocial() {
     const response = await mutateAsync(provider);
 
     if (response) {
-      router.push(response.url);
+      router.replace(response.url);
     }
   };
   return (
