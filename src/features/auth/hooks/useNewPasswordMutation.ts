@@ -27,7 +27,7 @@ export function useNewPasswordMutation() {
 			toast.success('Пароль успешно изменён', {
 				description: 'Теперь вы можете войти в свой аккаунт.'
 			})
-			router.push('/dashboard/settings')
+			router.replace('/dashboard/settings')
 		},
 		onError(error) {
 			toastMessageHandler(error)

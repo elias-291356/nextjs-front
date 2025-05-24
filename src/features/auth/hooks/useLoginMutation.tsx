@@ -24,7 +24,7 @@ export function useLoginMutation() {
         toastMessageHandler(data);
       } else {
         toast.success("Успешная авторизация");
-        router.push("/dashboard/settings");
+        router.replace("/dashboard/settings");
       }
     },
     onError(error) {
