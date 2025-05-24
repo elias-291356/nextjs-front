@@ -7,7 +7,7 @@ import { TypeLoginSchema } from "../schemes";
 import { authService } from "../services";
 import { toastMessageHandler } from "@/shared/styles/utils";
 
-export function useLoginMutation() {
+export function useLoginMutation(setIsShowFactor:Dispatch<SetStateAction<boolean>>) {
   const router = useRouter();
 
   const { mutate: login, isPending: isLoadingLogin } = useMutation({
@@ -22,6 +22,7 @@ export function useLoginMutation() {
     onSuccess(data: any) {
       if (data.message) {
         toastMessageHandler(data);
+        setIsShowFactor(true)
       } else {
         toast.success("Успешная авторизация");
         router.replace("/dashboard/settings");

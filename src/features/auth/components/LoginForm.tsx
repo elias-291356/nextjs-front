@@ -19,21 +19,23 @@ import { useState } from "react";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useLoginMutation } from "../hooks";
-import Link from 'next/link'
+import Link from "next/link";
 
 export function LoginForm() {
   const { theme } = useTheme();
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+  const [isShowTwoFactor, setIsShowFactor] = useState(false);
 
   const form = useForm<TypeLoginSchema>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
       password: "",
+      code: "",
     },
   });
 
-  const { login, isLoadingLogin } = useLoginMutation();
+  const { login, isLoadingLogin } = useLoginMutation(setIsShowFactor);
 
   const onSubmit = (values: TypeLoginSchema) => {
     if (recaptchaValue) {
@@ -55,54 +57,78 @@ export function LoginForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="grid gap-2 space-y-2"
         >
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Почта</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="ivan@example.com"
-                    type="email"
-                    disabled={isLoadingLogin}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex items-center justify-between">
-                  <FormLabel>Пароль</FormLabel>
-                  <Link
-                    href="/auth/reset-password"
-                    className="ml-auto inline-block text-sm underline"
-                  >
-                    Забыли пароль?
-                  </Link>
-                </div>
-                <FormControl>
-                  <Input
-                    placeholder="******"
-                    disabled={isLoadingLogin}
-                    type="password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
+          {isShowTwoFactor && (
+            <FormField
+              control={form.control}
+              name="code"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Код</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="123456"
+                      disabled={isLoadingLogin}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+          {!isShowTwoFactor && (
+            <>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Почта</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="ivan@example.com"
+                        type="email"
+                        disabled={isLoadingLogin}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-center justify-between">
+                      <FormLabel>Пароль</FormLabel>
+                      <Link
+                        href="/auth/reset-password"
+                        className="ml-auto inline-block text-sm underline"
+                      >
+                        Забыли пароль?
+                      </Link>
+                    </div>
+                    <FormControl>
+                      <Input
+                        placeholder="******"
+                        disabled={isLoadingLogin}
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string}
+              sitekey={
+                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+              }
               onChange={setRecaptchaValue}
               theme={theme === "light" ? "light" : "dark"}
             />
