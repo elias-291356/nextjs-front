@@ -6,4 +6,4 @@ export * from "./LoginForm";
 export * from './NewVerificationForm'
 
 export * from './ResetPasswordForm'
-// export * from './NewPasswordForm'
+export * from './NewPasswordForm'
