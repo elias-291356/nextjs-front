@@ -18,7 +18,7 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useLoginMutation } from "../hooks/useLoginMutation";
+import { useLoginMutation } from "../hooks";
 
 export function LoginForm() {
   const { theme } = useTheme();
