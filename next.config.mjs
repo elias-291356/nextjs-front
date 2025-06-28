@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
+  // experimental: {
+  //   missingSuspenseWithCSRBailout: false,
+  // },
   env: {
     SERVER_URL: process.env.SERVER_URL,
-    GOOGLE_RECAPTCHA_SECRET_KEY_CLIENT: process.env.GOOGLE_RECAPTCHA_SECRET_KEY_CLIENT
+    GOOGLE_RECAPTCHA_SECRET_KEY_CLIENT:
+      process.env.GOOGLE_RECAPTCHA_SECRET_KEY_CLIENT,
   },
   images: {
     remotePatterns: [
