@@ -7,7 +7,9 @@ import { TypeLoginSchema } from "../schemes";
 import { authService } from "../services";
 import { toastMessageHandler } from "@/shared/styles/utils";
 
-export function useLoginMutation(setIsShowFactor:Dispatch<SetStateAction<boolean>>) {
+export function useLoginMutation(
+  setIsShowFactor: Dispatch<SetStateAction<boolean>>,
+) {
   const router = useRouter();
 
   const { mutate: login, isPending: isLoadingLogin } = useMutation({
@@ -22,9 +24,9 @@ export function useLoginMutation(setIsShowFactor:Dispatch<SetStateAction<boolean
     onSuccess(data: any) {
       if (data.message) {
         toastMessageHandler(data);
-        setIsShowFactor(true)
+        setIsShowFactor(true);
       } else {
-        toast.success("Успешная авторизация");
+        toast.success("Erfolgreiche Anmeldung");
         router.replace("/dashboard/settings");
       }
     },

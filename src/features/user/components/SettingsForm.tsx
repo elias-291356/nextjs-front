@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -24,8 +22,6 @@ import {
 } from "@/shared/styles/components/ui";
 import { useProfile } from "@/shared/hooks";
 
-
-
 import { UserButton, UserButtonLoading } from "./UserButton";
 import { SettingsSchema, TypeSettingsSchema } from "../schemas";
 import { useUpdateProfileMutation } from "../hooks/useUpdateProfileMutation";
@@ -46,8 +42,7 @@ export function SettingsForm() {
 
   const onSubmit = (values: TypeSettingsSchema) => {
     update(values);
-    console.log(values)
-
+    console.log(values);
   };
 
   if (!user) return null;
@@ -55,7 +50,7 @@ export function SettingsForm() {
   return (
     <Card className="w-[400px]">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Настройки профиля</CardTitle>
+        <CardTitle>Profileinstellungen</CardTitle>
         {isLoading ? <UserButtonLoading /> : <UserButton user={user} />}
       </CardHeader>
       <CardContent>
@@ -72,10 +67,10 @@ export function SettingsForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Имя</FormLabel>
+                    <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Иван"
+                        placeholder="Ablona"
                         disabled={isLoadingUpdate}
                         {...field}
                       />
@@ -89,10 +84,10 @@ export function SettingsForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Почта</FormLabel>
+                    <FormLabel>E-Mail</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="ivan@example.com"
+                        placeholder="Theo@mail.com"
                         disabled={isLoadingUpdate}
                         type="email"
                         {...field}
@@ -108,10 +103,10 @@ export function SettingsForm() {
                 render={({ field }) => (
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                     <div className="space-y-0.5">
-                      <FormLabel>Двухфакторная аутентификация</FormLabel>
+                      <FormLabel>Zwei-Faktor-Authentifizierung</FormLabel>
                       <FormDescription>
-                        Включите двухфакторную аутентификацию для вашей учетной
-                        записи
+                        Aktivieren Sie die Zwei-Faktor-Authentifizierung für Ihr
+                        Konto
                       </FormDescription>
                     </div>
                     <FormControl>
@@ -124,7 +119,7 @@ export function SettingsForm() {
                 )}
               />
               <Button type="submit" disabled={isLoadingUpdate}>
-                Сохранить
+                Speichern
               </Button>
             </form>
           </Form>

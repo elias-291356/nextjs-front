@@ -1,13 +1,10 @@
-import { ResetPasswordForm } from '@/features/auth/components'
-import type { Metadata } from 'next'
-
-
+import { ResetPasswordForm } from "@/features/auth/components";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: 'Сброс пароля'
-}
+  title: "Passwort zurücksetzen",
+};
 
 export default function ResetPasswordPage() {
-	return <ResetPasswordForm />
-
+  return <ResetPasswordForm />;
 }

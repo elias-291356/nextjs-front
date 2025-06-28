@@ -40,15 +40,15 @@ export function RegisterForm() {
     if (recaptchaValue) {
       register({ values, recaptcha: recaptchaValue });
     } else {
-      toast.error("Пожалуйста, завершите reCAPTCHA");
+      toast.error("Bitte schließen Sie die reCAPTCHA-Prüfung ab");
     }
   };
 
   return (
     <AuthWrapper
-      heading="Регистрация"
-      description="Чтобы войти на сайт введите ваш email и пароль"
-      backButtonLabel="Уже есть аккаунт? Войти"
+      heading="Registrierung"
+      description="Um sich auf der Website anzumelden, geben Sie bitte Ihre E-Mail-Adresse und Ihr Passwort ein"
+      backButtonLabel="Schon ein Konto? Anmelden"
       backButtonHref="/auth/login"
       isShowSocial
     >
@@ -62,10 +62,10 @@ export function RegisterForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Имя</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Иван"
+                    placeholder="Jonas"
                     disabled={isLoadingRegister}
                     {...field}
                   />
@@ -79,10 +79,10 @@ export function RegisterForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Почта</FormLabel>
+                <FormLabel>E-Mail</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="ivan@example.com"
+                    placeholder="Jonas@mail.com"
                     type="email"
                     disabled={isLoadingRegister}
                     {...field}
@@ -97,7 +97,7 @@ export function RegisterForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Пароль</FormLabel>
+                <FormLabel>Passwort</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="******"
@@ -115,7 +115,7 @@ export function RegisterForm() {
             name="passwordRepeat"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Повторите пароль</FormLabel>
+                <FormLabel>Passwort wiederholen</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="******"
@@ -130,12 +130,16 @@ export function RegisterForm() {
           />
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string}
+              sitekey={
+                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+              }
               onChange={setRecaptchaValue}
               theme={theme === "light" ? "light" : "dark"}
             />
           </div>
-          <Button type="submit" disabled={isLoadingRegister}>Создать аккаунт</Button>
+          <Button type="submit" disabled={isLoadingRegister}>
+            Konto erstellen
+          </Button>
         </form>
       </Form>
     </AuthWrapper>

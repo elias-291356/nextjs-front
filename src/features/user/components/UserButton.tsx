@@ -35,7 +35,7 @@ export function UserButton({ user }: UserButtonProps) {
       <DropdownMenuContent className="w-40" align="end">
         <DropdownMenuItem disabled={isLoadingLogout} onClick={() => logout()}>
           <LuLogOut className="mr-2 size-4" />
-          Выйти
+          Abmelden
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

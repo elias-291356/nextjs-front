@@ -41,14 +41,14 @@ export function LoginForm() {
     if (recaptchaValue) {
       login({ values, recaptcha: recaptchaValue });
     } else {
-      toast.error("Пожалуйста, завершите reCAPTCHA");
+      toast.error("Bitte schließen Sie die reCAPTCHA-Verifizierung ab");
     }
   };
   return (
     <AuthWrapper
-      heading="Войти"
-      description="Чтобы войти на сайт введите ваш email и пароль"
-      backButtonLabel="Еще нет аккаунта? Регистрация"
+      heading="Einloggen"
+      description="Bitte E-Mail und Passwort eingeben, um sich anzumelden."
+      backButtonLabel="Noch kein Konto? Registrieren"
       backButtonHref="/auth/register"
       isShowSocial
     >
@@ -63,7 +63,7 @@ export function LoginForm() {
               name="code"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Код</FormLabel>
+                  <FormLabel>Code</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="123456"
@@ -83,7 +83,7 @@ export function LoginForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Почта</FormLabel>
+                    <FormLabel>E-Mail</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="ivan@example.com"
@@ -102,12 +102,12 @@ export function LoginForm() {
                 render={({ field }) => (
                   <FormItem>
                     <div className="flex items-center justify-between">
-                      <FormLabel>Пароль</FormLabel>
+                      <FormLabel>Passwort</FormLabel>
                       <Link
                         href="/auth/reset-password"
                         className="ml-auto inline-block text-sm underline"
                       >
-                        Забыли пароль?
+                        Passwort vergessen?
                       </Link>
                     </div>
                     <FormControl>
@@ -134,7 +134,7 @@ export function LoginForm() {
             />
           </div>
           <Button type="submit" disabled={isLoadingLogin}>
-            Войти аккаунт
+            Im Konto anmelden
           </Button>
         </form>
       </Form>
