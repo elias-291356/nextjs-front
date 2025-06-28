@@ -1,25 +1,25 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from "next/server";
 
 export default function middleware(request: NextRequest) {
-	const { url, cookies } = request
+  const { url, cookies } = request;
 
-	const session = cookies.get('session')?.value
-       
-	const isAuthPage = url.includes('/auth')
+  const session = cookies.get("session")?.value;
 
-	if (isAuthPage) {
-		if (session) {
-			return NextResponse.redirect(new URL('/dashboard/settings', url))
-		}
+  const isAuthPage = url.includes("/auth");
 
-		return NextResponse.next()
-	}
+  if (isAuthPage) {
+    if (session) {
+      return NextResponse.redirect(new URL("/dashboard/settings", url));
+    }
 
-	if (!session) {
-		return NextResponse.redirect(new URL('/auth/login', url))
-	}
+    return NextResponse.next();
+  }
+
+  if (!session) {
+    return NextResponse.redirect(new URL("/auth/login", url));
+  }
 }
 
 export const config = {
-	matcher: ['/auth/:path*', '/dashboard/:path*']
-}
+  matcher: ["/auth/:path*", "/dashboard/:path*"],
+};
