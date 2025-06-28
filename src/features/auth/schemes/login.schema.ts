@@ -2,10 +2,10 @@ import { z } from "zod";
 
 export const LoginSchema = z.object({
   email: z.string().email({
-    message: "Некорректная почта",
+    message: "Ungültige E-Mail-Adresse",
   }),
   password: z.string().min(6, {
-    message: "Пароль минимум 6 символов",
+    message: "Das Passwort muss mindestens 6 Zeichen lang sein",
   }),
   code: z.optional(z.string()),
 });

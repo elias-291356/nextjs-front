@@ -8,15 +8,6 @@ import { ToggleTheme } from "@/shared/styles/components/ui/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Курс по авторизации",
-    template: "%s | Курс по авторизации",
-  },
-  description:
-    "Это учебный проект, созданный для демонстрации полного цикла авторизации пользователей",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,4 +28,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -3,7 +3,6 @@ import { useMutation } from "@tanstack/react-query";
 import { TypeRegisterSchema } from "../schemes";
 import { authService } from "../services";
 import { toastMessageHandler } from "@/shared/styles/utils";
-import { toast } from "sonner";
 
 export function useRegisterMutation() {
   const { mutate: register, isPending: isLoadingRegister } = useMutation({
